@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeWise — Learn the market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="TradeWise home">
+        <span class="brand-mark">TW</span>
+        <span>Trade<span>Wise</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <button class="nav-link active" data-page="dashboard">Dashboard</button>
+        <button class="nav-link" data-page="terms">Glossary</button>
+        <button class="nav-link" data-page="options">Options Lab</button>
+        <button class="nav-link" data-page="news">News</button>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="searchToggle" aria-label="Search">⌕</button>
+        <button class="login-button" id="loginButton">Log in</button>
+        <div class="account-menu-wrap">
+          <button class="avatar hidden" id="avatarButton" aria-label="Account" aria-haspopup="menu" aria-expanded="false">JD</button>
+          <div class="account-menu hidden" id="accountMenu" role="menu" aria-label="Account menu">
+            <button type="button" role="menuitem" id="logoutButton">Log out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="page active" id="dashboard">
+        <div class="ticker-strip" id="tickerStrip"></div>
+
+        <div class="dashboard-grid">
+          <div class="main-column">
+            <section class="card market-card">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">YOUR WATCHLIST</p>
+                  <h1>Market overview</h1>
+                </div>
+                <div class="live-status"><span></span> Live market</div>
+              </div>
+              <div class="watchlist" id="watchlist"></div>
+            </section>
+
+            <section class="card chart-card">
+              <div class="chart-header">
+                <div class="stock-title">
+                  <div class="stock-logo" id="selectedLogo">A</div>
+                  <div>
+                    <h2 id="selectedName">Apple Inc.</h2>
+                    <p id="selectedSymbol">AAPL · NASDAQ</p>
+                  </div>
+                </div>
+                <div class="stock-price">
+                  <strong id="selectedPrice">$227.16</strong>
+                  <span id="selectedChange" class="positive">+1.82 (+0.81%)</span>
+                </div>
+              </div>
+              <div class="chart-toolbar">
+                <div class="range-buttons" aria-label="Chart range">
+                  <button data-range="1D" aria-pressed="false">1D</button><button data-range="1W" class="active" aria-pressed="true">1W</button><button data-range="1M" aria-pressed="false">1M</button><button data-range="3M" aria-pressed="false">3M</button><button data-range="1Y" aria-pressed="false">1Y</button>
+                </div>
+                <button class="follow-button" id="followButton">☆ Follow</button>
+              </div>
+              <div class="chart" id="chart" role="img" aria-label="AAPL stock price chart"></div>
+              <div class="chart-times"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div>
+            </section>
+
+            <section class="card analysis-card">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">SMART INSIGHTS</p>
+                  <h2>Stock analysis</h2>
+                </div>
+                <span class="updated">Updated just now</span>
+              </div>
+              <div class="analysis-grid">
+                <div class="analysis-score">
+                  <div class="score-ring"><strong>78</strong><span>/100</span></div>
+                  <p>Strong outlook</p>
+                </div>
+                <div class="analysis-factors">
+                  <div><span>Momentum</span><div class="meter"><i style="width:82%"></i></div><strong>Bullish</strong></div>
+                  <div><span>Volatility</span><div class="meter"><i style="width:46%"></i></div><strong>Moderate</strong></div>
+                  <div><span>Analyst rating</span><div class="meter"><i style="width:76%"></i></div><strong>Buy</strong></div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <aside class="side-column">
+            <section class="card news-card">
+              <div class="section-heading compact">
+                <h2>Market news</h2>
+                <button class="text-button" data-page-jump="news">View all</button>
+              </div>
+              <div id="newsPreview"></div>
+            </section>
+            <section class="ad-slot" aria-label="Advertisement">
+              <span>ADVERTISEMENT</span>
+              <p>AdSense</p>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" id="terms">
+        <div class="page-heading">
+          <p class="eyebrow">LEARN THE LANGUAGE</p>
+          <h1>Trading glossary</h1>
+          <p>Build confidence by learning the terms traders use every day.</p>
+        </div>
+        <div class="search-box"><span>⌕</span><input id="glossarySearch" type="search" placeholder="Search terms..." /></div>
+        <div class="terms-grid" id="termsGrid"></div>
+      </section>
+
+      <section class="page" id="options">
+        <div class="page-heading">
+          <p class="eyebrow">OPTIONS LAB</p>
+          <h1>Explore options strategies</h1>
+          <p>Understand how common strategies work and where they may fit.</p>
+        </div>
+        <div class="strategy-grid" id="strategyGrid"></div>
+      </section>
+
+      <section class="page" id="news">
+        <div class="page-heading">
+          <p class="eyebrow">THE DAILY BRIEF</p>
+          <h1>Market news</h1>
+          <p>Headlines and analysis from reputable market sources.</p>
+        </div>
+        <div class="news-layout">
+          <div class="news-list" id="fullNews"></div>
+          <aside class="ad-slot tall" aria-label="Advertisement"><span>ADVERTISEMENT</span><p>AdSense</p></aside>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-backdrop hidden" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle" aria-describedby="loginDescription">
+      <div class="modal" tabindex="-1">
+        <button class="modal-close" id="closeLogin" aria-label="Close">×</button>
+        <div class="brand-mark modal-mark">TW</div>
+        <h2 id="loginTitle">Welcome back</h2>
+        <p id="loginDescription">Sign in to save your watchlist and preferences.</p>
+        <form id="loginForm">
+          <label>Email<input type="email" id="email" autocomplete="email" required placeholder="you@example.com"></label>
+          <label>Password<input type="password" id="password" autocomplete="current-password" required minlength="6" placeholder="At least 6 characters"></label>
+          <button class="primary-button" type="submit">Log in</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="upgrade-bar" id="upgradeBar">
+      <div><strong>Enjoy TradeWise without interruptions.</strong><span>Remove all ads for $4.99/month</span></div>
+      <button id="upgradeButton">Remove ads</button>
+      <button class="upgrade-close" id="upgradeClose" aria-label="Dismiss">×</button>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
